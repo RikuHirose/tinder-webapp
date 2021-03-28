@@ -17190,7 +17190,6 @@ readers do not read off random characters that represent icons */
 .tno i {
   color: #ff695b;
   font-size: 80px;
-  padding: 11px 24px;
 }
 
 .ti {
@@ -17232,7 +17231,6 @@ readers do not read off random characters that represent icons */
 .tyes i {
   color: #5de19c;
   font-size: 60px;
-  padding: 24px 23px;
 }
 
 .credit {
