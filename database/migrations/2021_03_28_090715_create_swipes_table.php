@@ -16,8 +16,8 @@ class CreateSwipesTable extends Migration
         Schema::create('swipes', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('from_user_id')->index();
-            $table->unsignedBigInteger('to_user_id')->index();
+            $table->unsignedBigInteger('from_user_id');
+            $table->unsignedBigInteger('to_user_id');
 
             $table->boolean('is_like');
 
@@ -25,6 +25,8 @@ class CreateSwipesTable extends Migration
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
+
+            $table->index(['from_user_id', 'to_user_id', 'is_like']);
         });
     }
 

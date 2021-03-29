@@ -21,7 +21,6 @@
 </head>
 <body>
     <div id="app">
-
         <div class="tbg">
             <div class="theader">
                 <nav class="navbar navbar-expand-md navbar-light bg-white">
@@ -85,6 +84,12 @@
                     </div>
                 </nav>
             </div>
+
+            @if (session('flash_message'))
+                <div class="flash_message bg-success text-center py-3 my-0">
+                    {{ session('flash_message') }}
+                </div>
+            @endif
 
             <div class="tbgwrap">
                 @yield('content')

@@ -16,8 +16,8 @@ class MatchController extends Controller
                             ->pluck('from_user_id');
 
         // 自分へいいねしてくれたユーザーから自分がいいねしたユーザー = マッチしたユーザー
-        $matchedUsers = Swipe::whereIn('to_user_id', $matchedUserIds)
-                            ->where('from_user_id', \Auth::user()->id)
+        $matchedUsers = Swipe::where('from_user_id', \Auth::user()->id)
+                            ->whereIn('to_user_id', $matchedUserIds)
                             ->where('is_like', true)
                             ->with('toUser')
                             ->get();

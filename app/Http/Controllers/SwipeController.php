@@ -15,6 +15,18 @@ class SwipeController extends Controller
             'is_like'      => $request->input('is_like'),
         ]);
 
+        // 自分がswipeした人からいいねが来ていたらmatch
+        $isMatch = $request->input('is_like') &&
+            Swipe::where('from_user_id', $request->input('to_user_id'))
+                ->where('to_user_id', \Auth::user()->id)
+                ->where('is_like', true)
+                ->exists();
+
+        if ($isMatch) {
+            return redirect(route('users.index'))
+                    ->with('flash_message', 'マッチしました!');
+        }
+
         return redirect(route('users.index'));
     }
 }
